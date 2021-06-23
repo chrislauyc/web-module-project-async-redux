@@ -11,7 +11,7 @@ import {
 const Plant=()=>{
     const [happiness,setHappiness] = useState(20);
     const [text, setText] = useState('');
-    const {polarity,type} = useSelector(state=>state);
+    const {type} = useSelector(state=>state);
     const dispatch = useDispatch();
     const handleChange=(e)=>{
         setText(e.target.value);
@@ -23,13 +23,6 @@ const Plant=()=>{
         }
     };
     useEffect(()=>{
-        // setHappiness(
-        //     Math.min(Math.max(
-        //         happiness-Math.min(Math.max(
-        //             Math.round(polarity*10)
-        //             ,-15),15)
-        //         ,0),51)
-        //     );
         if(type==='positive'){
             setHappiness(0);
         }
@@ -39,9 +32,7 @@ const Plant=()=>{
         else{
             setHappiness(20);
         }
-        // console.log(polarity,Math.round(polarity*5),happiness+Math.round(polarity*5));
     },[type]);
-    console.log('happiness',happiness,'polarity',polarity);
     return(
         <>
             <PlantImg happiness={happiness}/>
